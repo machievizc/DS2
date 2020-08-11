@@ -15,11 +15,12 @@ var listaCompras = [];
 
 app.post('/listaDeCompra', (req, res)=>{
     var item = req.body;
-
     listaCompras.push(item);
-    // res.status(201).send('insert');
-    res.send(listaCompras);
+    res.status(201).send('insert');
+});
 
+app.get('/listaDeCompra', (req, res)=>{
+    res.status(201).send(listaCompras);
 });
 
 

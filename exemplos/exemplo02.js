@@ -17,7 +17,6 @@ app.get('/listaDeCompra', (req, res)=>{
 });
 
 app.get('/listaDeCompra/:item', (req, res)=>{
-
     var encontrado = listaCompras[req.params.item-1];
     encontrado ? res.send(listaCompras) : res.status(404).send('not found');
 });
