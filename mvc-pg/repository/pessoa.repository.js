@@ -13,5 +13,8 @@ module.exports = {
     update: ( pessoa ) => {
         return connection.query('update pessoa set nome = $1, email = $2, fone = $3, endereco = $4, status = $5 where id = $6  returning *', 
         [pessoa.nome, pessoa.email, pessoa.fone, pessoa.endereco, pessoa.status, pessoa.id]);
+    },
+    delete: ( id ) => {
+        return connection.query('delete from pessoa where id = $1', [id]);
     }
 }

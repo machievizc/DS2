@@ -1,8 +1,8 @@
-const pessoaRepository = require('../repository/pessoa.repository');
+const cidadeRepository = require('../repository/cidade.repository');
 
 module.exports = {
     find: (req, res) => {
-        pessoaRepository.find()
+        cidadeRepository.find()
             .then((result) => {
                 res.send(result.rows);
             })
@@ -11,7 +11,7 @@ module.exports = {
             })
     },
     findOne: (req, res) => {
-        pessoaRepository.findOne(req.params.id)
+        cidadeRepository.findOne(req.params.id)
             .then((result) => {
                 result.rows[0] ? res.send(result.rows[0]) : res.status(404).send('Not Found');
             })
@@ -20,8 +20,8 @@ module.exports = {
             })
     },
     create: (req, res) => {
-        const pessoa = req.body;
-        pessoaRepository.create(pessoa)
+        const cidade = req.body;
+        cidadeRepository.create(cidade)
             .then((result) => {
                 res.status(201).send(result.rows[0]);
             })
@@ -30,9 +30,9 @@ module.exports = {
             });
     },
     update: (req, res) => {
-        const pessoa = req.body;
-        pessoa.id = req.params.id;
-        pessoaRepository.update(pessoa)
+        const cidade = req.body;
+        cidade.id = req.params.id;
+        cidadeRepository.update(cidade)
             .then((result) => {
 
                 if (result.rows.length > 0) {
@@ -47,14 +47,14 @@ module.exports = {
             });
     },
     delete: (req, res) => {
-        pessoaRepository.delete(req.params.id)
+        cidadeRepository.delete(req.params.id)
             .then((result) => {
 
                 if (result.rowCount > 0) {
                     res.status(204).send();
 
                 } else {
-                    res.status(404).send('not found');
+                    res.status(404).send('Registro not found');
                 }
 
             })

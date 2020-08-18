@@ -2,9 +2,10 @@ const express = require('express');
 const routes = express.Router();
 const PessoaController = require('../controller/pessoa.controller');
 
-routes.get('/pessoas', PessoaController.find);
-routes.post('/pessoas', PessoaController.create);
-routes.get('/pessoas/:id', PessoaController.findOne);
-routes.put('/pessoas/:id', PessoaController.update);
+routes.get('/', PessoaController.find);
+routes.post('/', PessoaController.create);
+routes.get('/:id([0-9]+)', PessoaController.findOne);
+routes.put('/:id([0-9]+)', PessoaController.update);
+routes.delete('/:id([0-9]+)', PessoaController.delete);
 
 module.exports = routes;

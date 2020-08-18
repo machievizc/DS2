@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./pg-connection');
-const pessoaRoutes = require('./routes/pessoa.route')
+const routes = require('./routes/index');
 
 const app = express();
 const porta = 3000;
 app.use(bodyParser.json());
 // rota pessoa
-app.use(pessoaRoutes);
+app.use(routes);
 
 app.get('/', (req, res) => {
     res.send('um get só pra testar q ta funcionando')
