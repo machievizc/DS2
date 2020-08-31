@@ -41,7 +41,7 @@ module.exports = {
         
         
     },
-    usernameExists: (username) => {
+    getByUsername: (username) => {
         return conn.query('select username from usuario where username = $1' ,[username]);
     }
 }
