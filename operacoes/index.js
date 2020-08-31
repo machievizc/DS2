@@ -1,14 +1,43 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const operacaoRoutes = require('./routes/operacoes.routes');
 
 const app = express();
-const porta = 3000;
+const port = 3000;
+
 app.use(bodyParser.json());
 
-app.use(operacaoRoutes);
+//Efetuar a operacao de adicao
+app.get('/adicao', (req, res) => {
+    const valores = req.body;
+    const resultado = valores.a + valores.b;
 
-
-app.listen(porta, () => {
-    console.log('Rodando na porta ' + porta)
+    res.send({resultado: resultado});
 });
+
+//Efetuar a operacao de subtracao
+app.get('/subtracao', (req, res) => {
+    const valores = req.body;
+    const resultado = valores.a - valores.b;
+
+    res.send({resultado: resultado});
+});
+
+//Efetuar a operacao de mutiplicacao
+app.get('/multiplicacao', (req, res) => {
+    const valores = req.body;
+    const resultado = valores.a * valores.b;
+
+    res.send({resultado: resultado});
+});
+
+//Efetuar a operacao de divisao
+app.get('/divisao', (req, res) => {
+    const valores = req.body;
+    const resultado = valores.a / valores.b;
+
+    res.send({resultado: resultado});
+});
+
+app.listen(port, () => {
+    console.log('Running in port '+ port)
+})

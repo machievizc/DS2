@@ -1,35 +1,30 @@
-const resp = [];
 module.exports = {
-    adicao: (req, res) => {
-        const calc = {
-            a: req.body.a,
-            b: req.body.b
-        };
-        resp.push(calc.a + calc.b);
-        res.send(resp);
-    },
-    subtracao: (req, res) => {
-        const calc = {
-            a: req.body.a,
-            b: req.body.b
-        };
-        resp.push(calc.a - calc.b);
-        res.send(resp);
-    },
-    multiplicacao: (req, res) => {
-        const calc = {
-            a: req.body.a,
-            b: req.body.b
-        };
-        resp.push(calc.a * calc.b);
-        res.send(resp);
-    },
-    divisao: (req, res) => {
-        const calc = {
-            a: req.body.a,
-            b: req.body.b
-        };
-        resp.push(calc.a / calc.b);
-        res.send(resp);
+    //Efetuar a operacao de adicao
+    adicao: (req,res) => {
+        const valores = req.body;
+        const resultado = valores.a + valores.b;
+
+        res.send({resultado: resultado});
+    }, 
+    //Efetuar a operacao de subtracao
+    subtracao: (req,res) => {
+        const valores = req.body;
+        const resultado = valores.a - valores.b;
+
+        res.send({resultado: resultado});
+    }, 
+    //Efetuar a operacao de multiplicacao
+    multiplicacao: (req,res) => {
+        const valores = req.body;
+        const resultado = valores.a * valores.b;
+
+        res.send({resultado: resultado});
+    }, 
+    //Efetuar a operacao de divisao
+    divisao: (req,res) => {
+        const valores = req.body;
+        const resultado = valores.a / valores.b;
+
+        res.send({resultado: resultado});
     }
 }

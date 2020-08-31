@@ -1,20 +1,21 @@
-const connection = require('../pg-connection')
+const conn = require('../pg-connection');
+
 module.exports = {
     find: () => {
-        return connection.query('select * from cidade');
+        return conn.query('select * from cidade order by id');
     },
-    findOne: ( id ) => {
-        return connection.query('select * from cidade where id = '+ id);
+    findOne: (id) => {
+        return conn.query('select * from cidade where id = $1', [id]);
     },
-    create: ( cidade ) => {
-        return connection.query('insert into cidade (nome, uf) values ($1,$2) returning *', 
-        [cidade.nome, cidade.uf]);
+    create: (cidade) => {
+        return conn.query('insert into cidade(nome, uf) values($1,$2) returning *', 
+                [cidade.nome, cidade.uf]);
     },
-    update: ( cidade ) => {
-        return connection.query('update cidade set nome = $1, uf = $2 where id = $3  returning *', 
-        [cidade.nome, cidade.uf, cidade.id]);
+    update: (cidade) => {
+        return conn.query('update cidade set nome = $1, uf = $2 where id = $3 returning *', 
+                [cidade.nome, cidade.uf, cidade.id]);
     },
-    delete: ( id ) => {
-        return connection.query('delete from cidade where id = $1', [id]);
+    delete: (id) => {
+        return conn.query('delete from cidade where id = $1', [id]);
     }
-}
+};
