@@ -14,6 +14,7 @@
     "angular-route": "^1.8.0",
     "angularjs": "0.0.1",
     "bootstrap": "^4.5.2",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "ng-storage": "^0.3.2"
   }
 }
